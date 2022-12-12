@@ -1,0 +1,44 @@
+
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+  <div class="d-flex">
+  <a href="{{path('index')}}"> <img width="150" src="{{asset('images/divers/logo.jpg')}}" style="cursor:pointer;" alt=""></a>
+  {% if is_granted('ROLE_ADMIN') %}
+   <button class="main__btn mt-5" ><i class="fa-solid fa-plus" id="add__icon"></i>déposer une annonce</button>
+  {% endif %}
+ 
+  </div>
+ 
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link ms-3" aria-current="page" href="{{path('index')}}"><img class="nav-img" src="{{asset('images/divers/home.png')}}" style="width:20px;" alt=""> Accueil</a></li>
+        {% if is_granted('ROLE_ADMIN') %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            menu admin
+          </a>
+          <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="{{path('show_product')}}">voir les produits</a></li>
+            <li><a class="dropdown-item" href="{{path('archived_product')}}">voir les produits archiver</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{path('create_product')}}">créer un produit</a></li>
+          </ul>
+        </li>
+        {% endif %}
+       
+      {% if app.user %}
+          <li class="nav-item"><a class="nav-link ms-3" id="link" href="{{path('app_logout')}}"><img class="nav-img" src="{{asset('images/divers/logout.png')}}" style="width:20px;" alt=""> se deconnecter</a></li>
+          {# <li class="nav-item"><a class="nav-link ms-3" id="link" href="{{path('app_logout')}}">mes réservation</a></li> #}
+      {% else %}
+   
+      <li class="nav-item"><a class="nav-link ms-3" id="link" href="{{path('register')}}"><img class="nav-img" src="{{asset('images/divers/edit.png')}}" style="width:20px;" alt=""> inscription</a></li>
+      <li class="nav-item"><a class="nav-link ms-3 d-flex gap-1" id="link" href="{{path('login')}}"><img class="nav-img" src="{{asset('images/divers/user.png')}}" style="width:20px;" alt="">connexion</a></li>
+      {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>

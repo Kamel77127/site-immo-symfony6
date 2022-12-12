@@ -1,0 +1,61 @@
+{{form_start(form , {attr: {class: 'col-sm-12 col-md-10 col-lg-12 d-flex flex-column gap-2'}})}}
+
+
+<div class="d-flex col-md-12 col-lg-12 gap-1">
+
+	<div class="d-flex flex-column ">
+		<label for="nom">nom de famille:</label>
+		{{form_row(form.nom)}}
+
+	</div>
+	<div class="d-flex flex-column">
+		<label for="prenom">votre prénom:</label>
+		{{form_row(form.prenom)}}
+	</div>
+
+
+</div>
+
+
+<div class="col-sm-12 col-md-12 col-lg-8 col-xxl-7 d-flex justify-content-around gap-1">
+
+
+<div class="col-sm-4 col-md-5 d-flex flex-column">
+		<label for="sexe">genre:</label>
+	{{form_row(form.sexe)}}
+	</div>
+
+	
+
+	<div class="col-sm-8 col-md-7 d-flex flex-column">
+		<label for="tel">votre numéro:</label>
+		{{form_row(form.tel)}}
+	</div>
+
+
+</div>
+
+<div class="d-flex gap-1 align-item-center justify-content-center">
+
+	<div class="col-sm-12 d-flex flex-column">
+		<label for="email">votre mail:</label>
+		{{form_row(form.email)}}
+	</div>
+
+	
+
+</div>
+
+
+<div class="d-flex flex-column col-sm-12 mx-auto justify-content-center align-item-center">
+	<label for="message">message: (optionel)</label>
+	{{form_row(form.message)}}
+</div>
+
+
+<div class="d-flex justify-content-center align-item-center">
+	{{form_row(form.submit)}}
+</div>
+
+{{ form_row(form._token) }}
+{{form_end(form , {'render_rest': false})}}

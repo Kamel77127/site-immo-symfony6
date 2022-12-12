@@ -1,0 +1,142 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+
+	<div class="container">
+
+			{{form_start(form)}}
+					<div class="col-sm-12 col-lg-6 mx-auto mt-5 d-flex flex-column gap-4">
+
+
+			{{form_errors(form)}}
+
+			<div class="">
+			<label for="title">nom du logement</label>
+			{{form_row(form.title)}}
+			</div>
+			
+			<div class="col-sm-12">
+			<label for="description">ajoutez une description</label>
+			{{form_row(form.description)}}
+			</div>
+			
+
+
+			<div class="d-flex gap-2">
+				<div class="">
+					<label for="surface">surface en m2</label>
+					{{form_row(form.surface)}}
+				</div>
+
+
+				<div class="">
+					<label for="piece">nombre de pièces</label>
+					{{form_row(form.piece)}}</div>
+
+			</div>
+
+			<div class="d-flex gap-4">
+				<div class="">
+					<label for="electricite">classe énergitique</label>
+					{{form_row(form.electricite)}}
+				</div>
+				<div class="">
+					<label for="gaz">GES</label>
+					{{form_row(form.gaz)}}
+				</div>
+				<div class="">
+					<label for="elecOuGaz">chauffage et eaux chaude</label>
+					{{form_row(form.elecOuGaz)}}
+				</div>
+
+
+			</div>
+			<div class="d-flex gap-5">
+				<div class="d-flex flex-column">
+				<label for="meuble">meublé ou pas</label>
+				{{form_row(form.meuble)}}
+				</div>
+				
+				<div class="d-flex flex-column">
+
+					<label class="mx-auto" for="type">type de logement</label>
+					{{form_row(form.type)}}
+				</div>
+
+
+			</div>
+
+
+			<div class="col-12">
+				<label for="region">Region du bien</label>
+				{{form_row(form.region)}}
+			</div>
+			<div class="">
+				<label for="departement">departement</label>
+				{{form_row(form.departement)}}
+			</div>
+			<div class="">
+				<label for="ville">ville du bien</label>
+				{{form_row(form.ville)}}
+			</div>
+			<div class="">
+			<label for="price">Prix du bien</label>
+			{{form_row(form.price)}}
+			</div>
+			<div class="container-fluid col-xl-12 d-flex gap-3 flex-wrap" >
+			{% for image in product.image %}
+	
+				
+					<div class="position-relative" style="width:150px; height:150px;">
+					<img value="{{image.id}}" src="{{asset('images/appartment/' ~ image.name)}}" class="d-block" alt="{{product.title}}"style="width:100%; height:100%;">
+					<button id="delete" type="button" value="{{image.id}}" >
+					<img src="{{asset('images/divers/remove.png')}}" class="display-absolute position-absolute top-0 start-100 translate-middle" style="width:20px; height:20px;cursor:pointer;" alt="">
+					</button>
+					
+					</div>
+					
+				
+				
+			{% endfor %}
+			</div>
+
+
+
+
+			<button type="button" class="btn btn-primary btn-new opacity-100" data-collection="#foo">ajouter une image</button>
+			<div id="foo" class="row" data-prototype="{{include ("include/_Addimage.inc.html.twig", {form: form.image.vars.prototype})|e("html_attr")}}" data-index="{{form.image|length > 0 ? form.image|last.vars.name +1 : 0}}">
+
+				{% for image in form.image %}
+					<div class="col-4">
+						{{ include ("include/_Addimage.inc.html.twig", {form: image}) }}
+					</div>
+					{{form_errors(form.image)}}
+				{% endfor %}
+			</div>
+
+
+			<div class="d-flex justify-content-center">
+				{{form_row(form.submit)}}
+			</div>
+				{{form_widget(form._token)}}
+	
+
+	
+
+	</div>
+		
+		{{form_end(form)}}
+	</div>
+
+
+{% endblock %}
+
+
+{% block javascripts %}
+
+
+    {{ encore_entry_script_tags('cookies') }}
+    {{ encore_entry_script_tags('update') }}
+
+{% endblock %}

@@ -1,0 +1,280 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{product.title}}
+{% endblock %}
+
+{% block body %}
+
+
+	<div class="modal-js d-flex" id="modal" style="visibility: hidden">
+
+
+		<div class="container-fluid justify-content-center col-sm-12 col-md-12 col-lg-12 col-xl-9 d-flex ">
+
+			<div class="principal-container">
+
+				<i class="fa-solid fa-left-long left-row mx-auto my-auto me-3 "></i>
+				<i class="fa-solid fa-right-long right-row mx-auto my-auto ms-3"></i>
+
+			</div>
+
+			<i class="fa-solid fa-xmark close-button fa-2xl"></i>
+
+		</div>
+
+
+		<div class="img-list-container d-none container col-lg-4 col-xl-3" style="height:350px;overflow:auto;">
+
+			{% for image in images %}
+				<img width="80" height="100" class="img-slider" src="{{asset('images/appartment/' ~ image.name)}}" alt="">
+			{% endfor %}
+
+		</div>
+
+
+	</div>
+
+
+	<div class=" col-sm-12 col-md-6 col-xl-12 mt-5 d-flex">
+
+		<div class="container d-flex gap-1 col-sm-12 col-md-6 col-lg-6 col-xl-12">
+
+			{% for image in firstImage %}
+				<img data-modal="modal" src="{{asset('images/appartment/' ~ image.name)}}" class="mb-5 rounded modal-toggler " alt="A generic square placeholder image with rounded corners in a figure.">
+			{% endfor %}
+
+
+			<div class="position-relative">
+				{% for image in secondImage %}
+
+
+					<img data-modal="modal" src="{{asset('images/appartment/' ~ image.name)}}" class="mb-5 rounded position-absolute start-0 modal-toggler " alt="A generic square placeholder image with rounded corners in a figure.">
+
+					<button class="mb-5 position-absolute bottom-0 button-modal">voir les photos</button>
+
+				{% endfor %}
+			</div>
+
+
+		</div>
+
+
+	</div>
+
+	<div class="col-lg-12 d-flex container contact_box">
+
+		<div class="d-flex flex-column container align-item-center col-sm-12 col-md-12 col-lg-8 mt-5 ">
+			<h4 class="text-center">EXELIA MANTES LA JOLIE</h4>
+
+			{% include "include/_formEmail.inc.html.twig" %}
+
+		</div>
+
+	</div>
+	<div class="container">
+
+
+		<div class="col-lg-6 mt-5">
+
+			<h2>{{product.title}}</h2>
+			<div class="d-flex">
+				<p>{{product.piece}}
+					pièces .
+					{{product.surface}}M2 .
+					{{ville}}
+					.
+					{{departement}}
+					.
+					{{region}}</p>
+
+
+			</div>
+
+
+		</div>
+
+
+		<h4>Description</h4>
+
+		<p>{{product.description}}</p>
+
+		<hr></div>
+
+
+</div>
+
+<div class=" container ">
+	<h4 class="mb-5">Critères</h4>
+
+	<div class="col-lg-12 d-flex flex-wrap  gap-4 justify-content-center">
+
+
+		<div class="critere col-md-3  col-lg-3">
+			<h5 class="d-flex gap-1">
+				<i class="fa-solid fa-house"></i>Type de bien</h5>
+			<p>Appartement</p>
+		</div>
+
+		<div class="critere col-md-3 col-lg-3">
+			<h5 class="d-flex gap-1"><img src="{{asset('images/divers/cabinet.png')}}" width='20' alt="">Meublé / Non meublé</h5>
+			<p>{{product.meuble}}</p>
+		</div>
+
+		<div class="critere col-md-3 col-lg-3">
+
+			<h5 class="d-flex gap-1">
+				<img src="{{asset('images/divers/surface.png')}}" width='20' alt="">Surface</h5>
+			<p>{{product.surface}}m2</p>
+		</div>
+
+
+		<div class="critere col-md-3 col-lg-3">
+			<h5 class="d-flex"><img src="{{asset('images/divers/contour.png')}}" width='20' alt="">Pièces</h5>
+			<p>{{product.piece}}</p>
+		</div>
+
+		<div class="critere col-md-3 col-lg-3">
+			<h5 class="d-flex gap-1"><img src="{{asset('images/divers/power.png')}}" width='20' alt="">
+				Classe énergie</h5>
+			<div class="d-flex">
+				{% if product.electricite == 'A' %}
+					<div class="energie_A energie_chose">A</div>
+				{% else %}
+					<div class="energie_A">A</div>
+				{% endif %}
+
+				{% if product.electricite =='B' %}
+					<div class="energie_B energie_chose">B</div>
+
+				{% else %}
+					<div class="energie_B ">B</div>
+				{% endif %}
+
+
+				{% if product.electricite == 'C' %}
+					<div class="energie_C energie_chose ">C</div>
+
+				{% else %}
+					<div class="energie_C">C</div>
+				{% endif %}
+				{% if product.electricite == 'D' %}
+					<div class="energie_D energie_chose ">D</div>
+
+				{% else %}
+					<div class="energie_D ">D</div>
+
+				{% endif %}
+
+
+				{% if product.electricite == 'E' %}
+					<div class="energie_E energie_chose ">E</div>
+				{% else %}
+					<div class="energie_E ">E</div>
+
+				{% endif %}
+
+
+				{% if product.electricite == 'F' %}
+					<div class="energie_F energie_chose ">F</div>
+
+				{% else %}
+					<div class="energie_F">F</div>
+				{% endif %}
+
+				{% if product.electricite == 'G' %}
+					<div class="energie_G energie_chose ">G</div>
+
+				{% else %}
+					<div class="energie_G">G</div>
+
+				{% endif %}
+
+
+			</div>
+
+		</div>
+
+		<div class="critere col-md-3 col-lg-3">
+			<h5 class="d-flex gap-1"><img src="{{asset('images/divers/gaz-naturel.png')}}" width='20' alt="">GES</h5>
+
+
+			<div class="d-flex">
+
+				{% if product.gaz == 'A' %}
+					<div class="energie_A energie_chose">A</div>
+				{% else %}
+					<div class="energie_A">A</div>
+				{% endif %}
+
+				{% if product.gaz =='B' %}
+					<div class="energie_B energie_chose">B</div>
+
+				{% else %}
+					<div class="energie_B ">B</div>
+				{% endif %}
+
+
+				{% if product.gaz == 'C' %}
+					<div class="energie_C energie_chose ">C</div>
+
+				{% else %}
+					<div class="energie_C">C</div>
+				{% endif %}
+				{% if product.gaz == 'D' %}
+					<div class="energie_D energie_chose ">D</div>
+
+				{% else %}
+					<div class="energie_D ">D</div>
+
+				{% endif %}
+
+
+				{% if product.gaz == 'E' %}
+					<div class="energie_E energie_chose ">E</div>
+				{% else %}
+					<div class="energie_E ">E</div>
+
+				{% endif %}
+
+
+				{% if product.gaz == 'F' %}
+					<div class="energie_F energie_chose ">F</div>
+
+				{% else %}
+					<div class="energie_F">F</div>
+				{% endif %}
+
+				{% if product.gaz == 'G' %}
+					<div class="energie_G energie_chose ">G</div>
+
+				{% else %}
+					<div class="energie_G">G</div>
+
+				{% endif %}
+
+
+			</div>
+
+		</div>
+
+
+	</div>
+
+	<div class="mt-5 carte d-flex justify-content-center">
+
+		<iframe class="col-sm-12 col-md-12 col-lg-12 col-xl-12" height="500" src="https://maps.google.com/maps?&q={{ville}}&output=embed" frameborder="0"></iframe>
+	</div>
+</div>{% endblock %}
+
+
+
+
+
+
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('cookies') }}
+    {{ encore_entry_script_tags('product_page') }}
+{% endblock %}
+

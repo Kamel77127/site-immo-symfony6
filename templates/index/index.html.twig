@@ -1,0 +1,101 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Index
+{% endblock %}
+
+{% block body %}
+
+	<main class="main__container">
+		<div class="">
+
+
+
+  			
+
+
+			<div class="d-flex justify-content-center align-item-center">
+				<div class="row col-lg-5 col-xl-5 col-xxl-6 d-flex align-item-center justify-content-center">
+				{{form_start(form , {attr: {class: 'd-flex flex-column align-item-center justify-content-center col-sm-10 col-md-10 col-lg-10 col-xxl-5'}})}}
+
+				<h2 class="mb-5">Recherche :</h2>
+
+
+					{{form_row(form.ville)}}
+				
+
+				<div class="form-wide col-sm-12 col-xl-12 d-flex mt-3 gap-3">
+					{{form_row(form.type)}}
+					{{form_row(form.piece)}}
+				</div>
+				<div class="form-wide col-sm-12 col-xl-12 d-flex mt-3 gap-1">
+					{{form_row(form.surface)}}
+					{{form_row(form.price)}}
+				</div>
+				<button class="col-xl-6 mt-4 mx-auto search-button d-flex gap-2 justify-content-center">
+					<i class="fa-solid fa-magnifying-glass fa-xl my-auto  "></i>
+					rechercher</button>
+				{{form_end(form , {'render_rest': false})}}
+				
+				</div>
+				
+				<div class="image-container d-none col-md-4 col-lg-4 col-xxl-6">
+					<img class="img_back" src="{{asset('images/divers/famille.jpg')}}" alt="">
+
+				</div>
+
+
+			</div>
+
+
+			<section class="counter-section container">
+				
+					<div class="col-md-12 col-lg-12 card-container d-flex flex-column gap-5 justify-content-center">
+
+						<div class="card col-md-8 col-lg-3 col-xl-3 mx-auto card-transform" style="height: 20rem; border-radius: unset;">
+							<div class="card-body">
+								<i class="fa-solid fa-tablet-screen-button fa-xl mt-2"></i>
+								<h5 class="card-title text-center">Recherchez votre logement en ligne</h5>
+								<p class="card-text p-1">Des milliers d'annonces de location ! avec ça vous trouverez bien chaussure à vos pieds !</p>
+							</div>
+						</div>
+
+						<div class="card  col-md-8 col-lg-3 col-xl-3 mx-auto card-transform" style="height: 20rem; border-radius: unset;">
+							<div class="card-body">
+								<i class="fa-solid fa-house fa-xl"></i>
+								<h5 class="card-title text-center">Visitez
+								</h5>
+								<p class="card-text p-1">réservez un rendez-vous avec un de nos conseiller afin de visiter le bien</p>
+							</div>
+						</div>
+
+						<div class="card  col-md-8 col-lg-3 col-xl-3 mx-auto card-transform" style="height: 20rem; border-radius: unset;">
+							<div class="card-body">
+								<i class="fa-solid fa-key fa-xl"></i>
+								<h5 class="card-title text-center">clé en main</h5>
+								<p class="card-text p-1">Signe les papier donne l'argent et j'te passe les clé
+								</p>
+							</div>
+						</div>
+
+
+					
+
+
+				</div>
+			</section>
+		</main>
+
+		<!-- Footer -->
+
+		{% include "include/_footer.inc.html.twig" %}
+
+
+	{% endblock %}
+
+
+	{% block javascripts %}
+  	{{ encore_entry_script_tags('cookies') }}
+  	{{ encore_entry_script_tags('index') }}
+
+	{% endblock %}

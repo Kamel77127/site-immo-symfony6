@@ -1,0 +1,71 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+	<div class="container my-5 d-flex justify-content-around">
+		<a href="{{path('create_product')}}" class="btn btn-primary col-lg-3">ajouter un produit</a>
+		<a href="{{path('archived_product')}}" class="btn btn-danger col-lg-3">voir les archives</a>
+	</div>
+
+
+	<div class="container mx-auto my-5">
+
+
+		<table class="table ">
+
+			<thead class="table-light">
+				<tr>
+					<th>nom de produit</th>
+					<th>catégorie</th>
+					<th>image</th>
+					<th>date de création</th>
+					<th>date de modification</th>
+					<th>action</th>
+
+				</tr>
+			</thead>
+
+			<tbody class="table-primary">
+
+				{% if products is defined %}
+
+					{% for product in products %}
+
+						<tr>
+
+							<td>{{product.title}}</td>
+
+
+							<td>{{product.ville}}</td>
+							{% for image in product.image|slice(0,1) %}
+								<td><a href="{{path('product_page' , {'id': product.id})}}" style="cursor:pointer"><img src="{{asset('images/appartment/' ~ image.name) }}" style="width:100px;height:100px;" alt=""></a></td>
+							{% endfor %}
+							<td>{{product.createdat|date("d/m/Y")}}</td>
+							<td>{{product.updatedat|date("d/m/Y")}}</td>
+
+							<td class="d-flex gap-1">
+								<a href="{{path('update_product' , {'id': product.id})}}"><img src="{{asset('images/divers/update.png')}}" style="width:30px;background-repeat:no-repeat;" alt=""></a>
+								<a href="{{path('delete_product', {'id' : product.id})}}"><img src="{{asset('images/divers/remove.png')}}" style="width:30px;background-repeat:no-repeat;" alt=""></a>
+
+							</td>
+
+
+						</tr>
+
+
+					{% endfor %}
+
+				{% endif %}
+
+			</tbody>
+
+		</table>
+
+
+	</div>
+
+
+{% endblock %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('cookies') }}
+{% endblock %}

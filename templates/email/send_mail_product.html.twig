@@ -1,0 +1,30 @@
+
+{% block body %}
+
+
+    
+     <h1>intêret pour appartement {{product.title}} à {{product.ville}} </h1>
+
+        <div class="d-flex align-item-center justify-content-center">
+       
+       {% for image in product.image|slice(0,1) %}
+         <a href="{{path('product_page', {'id': product.id})}}"><img src="{{asset('images/appartment/' ~ image.name)}}" style="width:300px; height:300px" alt=""></a> 
+       {% endfor %}
+           
+   
+           
+        
+        </div>
+        <p>voici le message écrit par {{mailToSend.prenom}} :</p>
+        <p>
+        {{mailToSend.message}}
+        </p>
+
+        <p>recontactez le : tel : 0{{mailToSend.tel}} , email : {{mailToSend.email}}</p>
+   
+
+
+
+    
+
+{% endblock %}

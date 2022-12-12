@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}inscription{% endblock %}
+
+{% block body %}
+
+<div class="container col-md-6 mt-5 d-flex justify-content-center align-item-center ">
+
+
+
+<form action="{{path('register')}}" method="post" class="d-flex flex-column gap-2 position-relative">
+{{form_errors(form)}}
+
+<div class="d-flex flex-column align-item-center justify-content-center">
+<label for="email">votre E-mail</label>
+{{form_row(form.email)}}
+</div>
+
+
+
+
+<div class="d-flex gap-2">
+
+{{form_row(form.password)}}
+
+</div>
+
+<small>{{form_help(form.password)}}</small>
+{{form_row(form.submit)}}
+
+
+{{ form_rest(form) }}
+
+</form>
+
+
+
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+{% include "include/_footer.inc.html.twig" %}
+
+
+
+
+    
+
+{% endblock %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('cookies') }}
+{% endblock %}

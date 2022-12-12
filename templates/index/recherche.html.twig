@@ -1,0 +1,38 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+	<div class="container mt-5">
+
+		<h3>Annonces Location appartement et maison à louer : la ville
+		</h3>
+
+
+		{% for product in products %}
+			<div class="col-lg-6 d-flex gap-2 mt-5">
+
+				{% for image in product.image|slice(0,1) %}
+					<a href="{{path('product_page', {'id': product.id})}}">
+						<img width="350" src="{{asset('images/appartment/' ~ image.name)}}" style="height:300px" alt="">
+					</a>
+				{% endfor %}
+
+				<div class="">
+					<h4>{{product.price}}</h4>
+					<h5>{{product.title}}</h5>
+					<h5>{{product.ville}}</h5>
+				</div>
+
+
+			</div>
+			<hr>
+		{% endfor %}
+
+
+		<div class="mx-auto mt-4 mb-4">
+			{{knp_pagination_render(products)}}
+		</div>
+	</div>
+
+
+{% endblock %}
